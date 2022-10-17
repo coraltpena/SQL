@@ -1,0 +1,21 @@
+create boutique database--
+
+create table boutique (id integer primary key, name text, quantity integer, color text, size text, price integer);
+
+INSERT INTO boutique 
+VALUES 
+(1, "sweater", 5, "brown", "M", 35),
+(2, "boots", 6, "black", "L", 45),
+(3, "jeans", 4, "blue", "S", 30),
+(4, "dress", 6, "white", "M", 25);
+
+SELECT * FROM boutique;
+
+--display items and their price 
+select name, price  from boutique;
+
+--display what items are instock for medium size 
+select name, size, quantity from boutique  where size="M";
+
+-- display database order by price
+select * from boutique order by price;
