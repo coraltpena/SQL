@@ -1,0 +1,37 @@
+here is some SQL that i wrote for a digital media store.
+
+#1. Show Customers (their full names, customer ID, and country) who are not in the US. 
+select firstname, lastname, customerid, country 
+from chinook.customers
+where country != 'USA';
+
+#2. Show only the Customers from Brazil.
+select * 
+from chinook.customers
+where country= 'Brazil';
+
+#3. Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+SELECT cust.FirstName, cust.LastName, inv.InvoiceId, inv.BillingCountry, inv.InvoiceDate
+from chinook.invoices as inv 
+left join chinook.customers as cust 
+on inv.CustomerId = cust.CustomerId 
+where inv.BillingCountry = "Brazil";
+
+#4. Show the Employees who are Sales Agents.
+select * from chinook.employees
+where title like '%sales% agent%';
+
+#5. Find a unique/distinct list of billing countries from the Invoice table.
+select distinct BillingCountry 
+from chinook.invoices;
+
+#6. Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+select emp.firstname, emp.lastname, inv.invoiceid
+from chinook.employees as emp
+join chinook.customers as cust
+on cust.supportrepid= emp.employeeid
+join chinook.invoices as inv
+on inv.customerid= cust.customerid;
+
+
+#7. 
